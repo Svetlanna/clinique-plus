@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
+
 const db = require('../database');
 
 
+// GET : Récupérer un patient par son ID
 router.get('/:id', (req, res) => {
     const patientId = req.params.id; // Récupère le '2' de l'URL
     const sql = "SELECT * FROM patients WHERE id = ?";
@@ -19,6 +21,7 @@ router.get('/:id', (req, res) => {
 });
 
 
+// GET : Liste tous les patients
 router.get('/', (req, res) => {
     db.all("SELECT * FROM patients", [], (err, rows) => {
         if (err) return res.status(500).json({ error: err.message });
@@ -27,8 +30,7 @@ router.get('/', (req, res) => {
 });
 
 
-
-
+// POST : Ajouter un patient
 router.post('/', (req, res) => {
     const { nom, prenom, date_naissance, telephone, email } = req.body;
     const sql = `INSERT INTO patients (nom, prenom, date_naissance, telephone, email) VALUES (?,?,?,?,?)`;
@@ -38,6 +40,7 @@ router.post('/', (req, res) => {
     });
 });
 
+// DELETE : Supprimer un patient
 router.delete('/:id', (req, res) => {
     db.run("DELETE FROM patients WHERE id = ?", req.params.id, function(err) {
         if (err) return res.status(500).json({ error: err.message });
