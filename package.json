@@ -1,0 +1,14 @@
+{
+  "name": "clinique-plus-backend",
+  "version": "1.0.0",
+  "description": "API Backend pour CliniquePlus",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "init-db": "node init_db.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.7"
+  }
+}
