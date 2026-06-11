@@ -1,7 +1,7 @@
 
 Installation
  Cloner le dépôt :
-  git clone <URL_DE_VOTRE_DEPOT>
+  git clone https://github.com/Svetlanna/clinique-plus.git
 
 Installer les dépendances :
   cd CliniquePlusApi
