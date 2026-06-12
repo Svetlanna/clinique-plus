@@ -10,3 +10,4 @@ router.post('/', appointmentController.createAppointment);
 router.put('/:id', appointmentController.updateAppointment);
 
 module.exports = router;
+
