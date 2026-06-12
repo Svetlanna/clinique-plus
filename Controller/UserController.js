@@ -2,17 +2,15 @@ const userModel = require('../Model/userModel');
 const {json} = require("express");
 
 const login = async (req, res) => {
-    const { mail, password } = req.body;
+
+const { mail, password } = req.body;
+
 
     if (!mail || !password) {
         return res.status(400).json({ message: "Mail ou mot de passe manquant" });
     }
-
     try {
         const user = await userModel.findUserByMail(mail);
-
-        // SUPPRIMEZ la ligne : res.json({ status: "OK", received: req.body });
-        // Elle interrompt l'exécution prématurément !
 
         if (user && user.password === password) {
             const { password, ...userSafe } = user;
