@@ -1,15 +1,16 @@
+
 const db = require('../src/database');
 
-const Medecins = {
+const Medecin = {
     getAll: (callback) => {
         db.all("SELECT * FROM medecins", [], callback);
     },
     getById: (id, callback) => {
-        db.get("SELECT * FROM medecins WHERE id = ?", [id], callback);
+        db.get("SELECT * FROM medecin WHERE id = ?", [id], callback);
     },
     create: (data, callback) => {
-        const {nom, prenom, specialite, telephone} = data;
-        const sql = `INSERT INTO medecins (nom, prenom, specialite, telephone) VALUES (?, ?, ?, ?)`;
+        const { nom, prenom,specialite , telephone, email } = data;
+        const sql = `INSERT INTO medecins (nom, prenom, specialite, telephone) VALUES (?,?,?,?,?)`;
         db.run(sql, [nom, prenom, specialite, telephone], callback);
     },
     delete: (id, callback) => {
@@ -17,4 +18,4 @@ const Medecins = {
     }
 };
 
-module.exports = Medecins;
+module.exports = Medecin;
