@@ -11,7 +11,6 @@ router.get('/', (req, res) => {
 });
 
 
-// Récupérer un médecin par son ID
 router.get('/:id', (req, res) => {
     const medecinId = req.params.id;
     const sql = "SELECT * FROM medecins WHERE id = ?";
@@ -26,10 +25,22 @@ router.get('/:id', (req, res) => {
     });
 });
 
+router.post('/', (req, res) => {
+    const { nom, prenom, specialite, telephone } = req.body;
+    const sql = `INSERT INTO medecins (nom, prenom, specialite, telephone) VALUES (?, ?, ?, ?)`;
+
+    db.run(sql, [nom, prenom, specialite, telephone], function(err) {
+        if (err) return res.status(400).json({ error: err.message });
+        res.status(201).json({ id: this.lastID, message: "Médecin créé" });
+    });
+});
+
+
 router.delete('/:id', (req, res) => {
     db.run("DELETE FROM medecins WHERE id = ?", req.params.id, function(err) {
         if (err) return res.status(500).json({ error: err.message });
-        res.json({ message: "Medecin supprimé", changes: this.changes });
+        res.json({ message: "Médecin supprimé", changes: this.changes });
+
     });
 });
 
