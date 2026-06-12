@@ -6,7 +6,7 @@ const Medecin = {
         db.all("SELECT * FROM medecins", [], callback);
     },
     getById: (id, callback) => {
-        db.get("SELECT * FROM medecin WHERE id = ?", [id], callback);
+        db.get("SELECT * FROM medecins WHERE id = ?", [id], callback);
     },
     create: (data, callback) => {
         const { nom, prenom,specialite , telephone, email } = data;
