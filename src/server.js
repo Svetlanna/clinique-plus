@@ -5,7 +5,7 @@ app.use(express.json());
 
 
 const authRoutes = require('../src/routes/auth');
-const patientsRoutes = require('./routes/patients');
+const patientsRoutes = require('./routes/patientsRouteur');
 
 const medecinsRoutess = require('./routes/medecinsModel');
 app.use('/med', medecinsRoutess);
@@ -13,7 +13,8 @@ app.use('/med', medecinsRoutess);
 const medecinsRoutes = require('./routes/medecins');
 const appointmentsRoutes = require('./routes/appointments');
 
-app.use('/', authRoutes);
+app.use('/auth', authRoutes);
+
 app.use('/patients', patientsRoutes);
 
  app.use('/medecins', medecinsRoutes);
