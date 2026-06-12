@@ -3,21 +3,21 @@ const app = express();
 
 app.use(express.json());
 
-
 const authRoutes = require('../src/routes/auth');
 const patientsRoutes = require('./routes/patientsRouteur');
 
-const medecinsRoutess = require('./routes/medecinsRouteur');
 
+const medecinsRoutess = require('./routes/medecinsRouteur');
 
 const appointmentsRoutes = require('./routes/appointments');
 
 app.use('/auth', authRoutes);
 
 app.use('/patients', patientsRoutes);
-
  app.use('/medecins', medecinsRoutess);
 app.use('/appointments', appointmentsRoutes);
 
 app.listen(3000, () => console.log("Serveur prêt sur http://localhost:3000"));
+
+
 
