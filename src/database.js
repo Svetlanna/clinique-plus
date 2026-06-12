@@ -1,3 +1,9 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./data/database.sqlite');
+const path = require('path');
+
+
+const dbPath = path.resolve(__dirname, '../data/database.sqlite');
+
+const db = new sqlite3.Database(dbPath);
+
 module.exports = db;

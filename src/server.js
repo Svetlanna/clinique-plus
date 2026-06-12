@@ -4,8 +4,11 @@ const app = express();
 app.use(express.json());
 
 
-const authRoutes = require('./routes/userModel');
+const authRoutes = require('../src/routes/auth');
 const patientsRoutes = require('./routes/patients');
+
+const medecinsRoutess = require('./routes/medecinsModel');
+app.use('/med', medecinsRoutess);
 
 const medecinsRoutes = require('./routes/medecins');
 const appointmentsRoutes = require('./routes/appointments');
